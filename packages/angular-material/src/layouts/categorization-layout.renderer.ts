@@ -26,6 +26,9 @@ import {
   and,
   Categorization,
   categorizationHasCategory,
+  Category,
+  getAjv,
+  isVisible,
   JsonFormsState,
   mapStateToLayoutProps,
   RankedTester,
@@ -44,7 +47,7 @@ import { Subscription } from 'rxjs';
   template: `
     <mat-tab-group dynamicHeight="true" [fxHide]="hidden">
       <mat-tab
-        *ngFor="let category of uischema.elements"
+        *ngFor="let category of visibleCategories"
         [label]="category.label"
       >
         <div *ngFor="let element of category.elements">
@@ -58,6 +61,7 @@ export class CategorizationTabLayoutRenderer
   extends JsonFormsBaseRenderer<Categorization>
   implements OnInit, OnDestroy {
   hidden: boolean;
+  visibleCategories: (Category | Categorization)[];
   private subscription: Subscription;
 
   constructor(private jsonFormsService: JsonFormsAngularService) {
@@ -69,6 +73,9 @@ export class CategorizationTabLayoutRenderer
       next: (state: JsonFormsState) => {
         const props = mapStateToLayoutProps(state, this.getOwnProps());
         this.hidden = !props.visible;
+        this.visibleCategories =  this.uischema.elements.filter((category: Category | Categorization) =>
+          isVisible(category, props.data, undefined, getAjv(state))
+        );
       }
     });
   }
