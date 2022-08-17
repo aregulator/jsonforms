@@ -24,7 +24,6 @@
 */
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
-  getLocale,
   isDateControl,
   RankedTester,
   rankWith
@@ -64,7 +63,7 @@ export class DateControlRenderer extends JsonFormsControl {
   }
 
   mapAdditionalProps() {
-    const locale = getLocale(this.jsonFormsService.getState());
+    const locale = this.jsonFormsService.getLocale();
     this.dateAdapter.setLocale(locale);
   }
 
