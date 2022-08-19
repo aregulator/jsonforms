@@ -1,0 +1,11 @@
+import { JsonSchema } from '../models/jsonSchema';
+import { ControlElement, UISchemaElement } from '../models/uischema';
+import { JsonFormsUISchemaRegistryEntry } from '../reducers/uischemas';
+export interface CombinatorSubSchemaRenderInfo {
+    schema: JsonSchema;
+    uischema: UISchemaElement;
+    label: string;
+}
+export declare type CombinatorKeyword = 'anyOf' | 'oneOf' | 'allOf';
+export declare const resolveSubSchemas: (schema: JsonSchema, rootSchema: JsonSchema, keyword: CombinatorKeyword) => JsonSchema;
+export declare const createCombinatorRenderInfos: (combinatorSubSchemas: JsonSchema[], rootSchema: JsonSchema, keyword: CombinatorKeyword, control: ControlElement, path: string, uischemas: JsonFormsUISchemaRegistryEntry[]) => CombinatorSubSchemaRenderInfo[];

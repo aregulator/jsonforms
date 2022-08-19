@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/generators/index.ts"],"names":[],"mappings":";;AA0BA,mCAA8C;AAkBrC,6BAlBA,2BAAkB,CAkBA;AAjB3B,uCAA2E;AAkBlE,kCAlBsB,kCAAuB,CAkBtB;AAhBnB,QAAA,QAAQ,GASjB;IACF,UAAU,EAAE,2BAAkB;IAC9B,QAAQ,EAAE,kCAAuB;IACjC,cAAc,EAAE,+BAAoB;CACrC,CAAC"}
